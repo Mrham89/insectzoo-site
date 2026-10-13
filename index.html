@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insect Zoo — Local AI That Makes Your Team Faster, Without the Cloud Bill</title>
+  <meta name="description" content="Insect Zoo builds private, solar-powered AI that runs on hardware you own — augmenting the team you already have. No metered cloud bill that grows every time they use it. Plus independent web & API penetration testing. Washington State.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="exhibits.css">
+  <link rel="icon" type="image/svg+xml" href="argos-mark.svg">
+</head>
+<body class="zoo-home">
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="argos-mark.svg" class="logo-mark" alt="Argos"><span class="pink">I</span>nsect <span class="gold">Z</span>oo</a>
+    <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
+    <ul>
+      <li><a href="#charlotte">Charlotte</a></li>
+      <li><a href="#ants">Ants</a></li>
+      <li><a href="#fireflies">Fireflies</a></li>
+      <li><a href="#bees">Bees</a></li>
+      <li><a href="#termites">Termites</a></li>
+      <li><a href="security.html">Security</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- EXHIBIT 01 (hero): Charlotte the barn spider spins her orb web; Argos is your cursor -->
+<section id="charlotte" class="exhibit exhibit--hero hero-stage">
+  <canvas class="exhibit-sim" data-sim="spider" aria-label="Orb-weaver spider simulation: move Argos into Charlotte's web"></canvas>
+  <span class="exhibit-stat"></span>
+  <div class="hero-copy exhibit-overlay">
+    <p class="exhibit-tag">Exhibit 01 &middot; Charlotte the barn spider</p>
+    <div class="brandmark"><span class="word"><span class="ai pink">I</span>nsect <span class="ai gold">Z</span>oo</span></div>
+    <h1>AI designed after insects.</h1>
+    <p class="exhibit-line">Charlotte, an arachnid (Araneus cavaticus), waits at her hub and feels every strand: one agent sensing the whole perimeter.</p>
+    <p class="exhibit-hint">Fly Argos into her sticky silk, or click a strand. <a href="security.html" class="learn-more">Security &rarr;</a></p>
+    <a href="#ants" class="scroll-cue" aria-label="Next exhibit">&darr;</a>
+  </div>
+</section>
+
+<!-- EXHIBIT 02: ants -->
+<section id="ants" class="exhibit">
+  <canvas class="exhibit-sim" data-sim="ants" aria-label="Weaver ant simulation: drag to lay a scent trail"></canvas>
+  <span class="exhibit-stat"></span>
+  <div class="exhibit-overlay">
+    <button type="button" class="exhibit-toggle" aria-expanded="true" aria-label="Fold the exhibit notes">-</button>
+    <p class="exhibit-tag">Exhibit 02 &middot; Weaver ants</p>
+    <h2>Nature's self-organizing software</h2>
+    <p class="exhibit-line">Weaver ants (Oecophylla smaragdina) form living chains to pull leaves together and stitch them with larval silk: shared scent, no boss.</p>
+    <p class="exhibit-hint">Drag to lay scent toward the leaves.</p>
+    <a href="ai-lab.html" class="learn-more">AI Engineering Lab &rarr;</a>
+  </div>
+</section>
+
+<!-- EXHIBIT 03: fireflies -->
+<section id="fireflies" class="exhibit">
+  <canvas class="exhibit-sim" data-sim="fireflies" aria-label="Firefly simulation: click to scramble their rhythm"></canvas>
+  <span class="exhibit-stat"></span>
+  <div class="exhibit-overlay">
+    <button type="button" class="exhibit-toggle" aria-expanded="true" aria-label="Fold the exhibit notes">-</button>
+    <p class="exhibit-tag">Exhibit 03 &middot; Fireflies</p>
+    <h2>Decentralized consensus in action</h2>
+    <p class="exhibit-line">Photinus carolinus fireflies are beetles; each flash nudges its neighbours until the swarm flashes in sync: leaderless consensus on tiny devices.</p>
+    <p class="exhibit-hint">Click to scramble them, then watch them re-sync.</p>
+    <a href="consulting.html" class="learn-more">Embedded AI &rarr;</a>
+  </div>
+</section>
+
+<!-- EXHIBIT 04: bees -->
+<section id="bees" class="exhibit">
+  <canvas class="exhibit-sim" data-sim="bees" aria-label="Honeybee simulation: click to plant a flower"></canvas>
+  <span class="exhibit-stat"></span>
+  <div class="exhibit-overlay">
+    <button type="button" class="exhibit-toggle" aria-expanded="true" aria-label="Fold the exhibit notes">-</button>
+    <p class="exhibit-tag">Exhibit 04 &middot; Honeybees</p>
+    <h2>Elegant communication protocols</h2>
+    <p class="exhibit-line">Honeybee scouts (Apis mellifera) waggle-dance the bearing and distance of flowers, a compact report the whole hive can act on.</p>
+    <p class="exhibit-hint">Click to plant a flower.</p>
+    <a href="farmhub-iot.html" class="learn-more">FarmHub IoT &rarr;</a>
+  </div>
+</section>
+
+<!-- EXHIBIT 05: termites -->
+<section id="termites" class="exhibit">
+  <canvas class="exhibit-sim" data-sim="termites" aria-label="Termite simulation: paint pheromone with Argos, tap the mound wall to breach it"></canvas>
+  <span class="exhibit-stat"></span>
+  <div class="exhibit-overlay">
+    <button type="button" class="exhibit-toggle" aria-expanded="true" aria-label="Fold the exhibit notes">&minus;</button>
+    <p class="exhibit-tag">Exhibit 05 &middot; Termites</p>
+    <h2>Self-healing, self-building systems</h2>
+    <p class="exhibit-line">Macrotermes workers are blind: they forage and build by pheromone alone. When the mound is breached, soldiers guard the hole first, then workers seal it with soil.</p>
+    <p class="exhibit-hint">Pick a pheromone and paint with Argos. Tap the mound wall to breach it.</p>
+    <p class="termite-modes"><button type="button" class="termite-mode" data-mode="eat" aria-pressed="true">Eat trail</button> <button type="button" class="termite-mode" data-mode="build" aria-pressed="false">Build cement</button></p>
+    <a href="#contact" class="learn-more">Off-grid data gathering &rarr;</a>
+  </div>
+</section>
+
+<!-- ROI SANDBOX: The AI Bill Trap -->
+<section id="roi" class="roi-section">
+  <p class="section-label">Run the Numbers</p>
+  <h2>The AI Bill Trap</h2>
+  <p class="section-desc">Commercial AI agents charge by usage &mdash; so the bill <em>grows every time your team actually uses it.</em> Local AI you own is a one-time build that runs flat forever. Move the sliders and watch.</p>
+
+  <div class="roi-wrap">
+    <div class="roi-controls">
+      <label>Team using AI <span class="roi-out" id="roi-team-out">25 people</span>
+        <input type="range" id="roi-team" min="3" max="300" value="25" step="1"></label>
+      <label>How hard they use it <span class="roi-out" id="roi-use-out">Heavy</span>
+        <input type="range" id="roi-use" min="1" max="4" value="3" step="1"></label>
+      <label>Adoption growth over 3 yrs <span class="roi-out" id="roi-growth-out">2.5&times;</span>
+        <input type="range" id="roi-growth" min="10" max="50" value="25" step="1"></label>
+    </div>
+
+    <div class="roi-viz">
+      <canvas id="roi-chart"></canvas>
+      <div class="roi-result" id="roi-result"></div>
+    </div>
+  </div>
+
+  <p class="roi-punch">Same productivity lift for your team &mdash; <span class="highlight">without the meter.</span></p>
+  <div class="cta-row" style="justify-content:center; margin-top:1.5rem;">
+    <a href="#contact" class="btn btn-primary">Get this built for your team</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-section">
+  <p class="section-label">Get Started</p>
+  <h2>See What This Looks Like for Your Business</h2>
+  <p>30-minute walkthrough. No pitch, no pressure — just a look at what's running and how it could work for you.</p>
+  <p style="font-size: 1.3rem; margin-bottom: 0.5rem;"><strong>Johnathan Hamaker</strong></p>
+  <p style="font-size: 1.1rem; color: var(--gray-light); line-height: 2;">
+    wafarmhub@gmail.com<br>
+    Washington State
+  </p>
+  <p style="margin-top: 1.5rem; color: var(--gray-dark);">
+    <a href="https://www.linkedin.com/in/johnathan-hamaker-a85039198" target="_blank">LinkedIn</a>
+  </p>
+</section>
+
+<!-- ARGOS THE GUIDE: docked bottom-right; tips per exhibit + navigation (js/guide.js) -->
+<aside id="argos-guide" class="argos-guide" aria-label="Argos, your guide">
+  <div class="argos-bubble" role="status" aria-live="polite"></div>
+  <div class="guide-row">
+    <nav class="guide-jump" aria-label="Jump to an exhibit">
+      <a href="#charlotte">Spiders</a> <a href="#ants">Ants</a> <a href="#fireflies">Fireflies</a> <a href="#bees">Bees</a> <a href="#termites">Termites</a> <a href="#roi">Cost</a> <a href="#contact">Contact</a>
+    </nav>
+    <button type="button" class="guide-prev" aria-label="Previous exhibit">&uarr;</button>
+    <button type="button" class="guide-next">Next exhibit &darr;</button>
+    <button type="button" class="guide-min" aria-expanded="true" aria-label="Tuck Argos away">&times;</button>
+  </div>
+  <img class="argos-figure" src="argos.svg" alt="Argos the calculator, your guide">
+</aside>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Insect Zoo &middot; FarmHub LLC. All rights reserved. &nbsp;|&nbsp; Washington State &nbsp;|&nbsp; <a href="mailto:wafarmhub@gmail.com">wafarmhub@gmail.com</a></p>
+</footer>
+
+<!-- Insect Zoo: Living Twin + the ROI sandbox -->
+<script>
+/* ===== 0. Living Twin — per-prospect personalization from one ?t= blob =====
+   Pure function of the URL. Absent/corrupt blob => __TWIN stays null and the
+   page renders as the generic homepage. Never STATES a sourced fact; only
+   greets by name + pre-fills editable estimates. All values clamped/sanitized. */
+(function () {
+  window.__TWIN = null;
+  try {
+    var p = new URLSearchParams(location.search).get('t');
+    if (!p) return;
+    var b64 = p.replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    var raw = decodeURIComponent(escape(atob(b64)));   // UTF-8 safe
+    var d = JSON.parse(raw);
+    if (!d || typeof d !== 'object') return;
+    var clampInt = function (v, lo, hi, dflt) {
+      v = parseInt(v, 10); if (isNaN(v)) return dflt;
+      return Math.max(lo, Math.min(hi, v));
+    };
+    var name = (typeof d.c === 'string') ? d.c.slice(0, 60).replace(/[<>]/g, '').trim() : '';
+    window.__TWIN = Object.freeze({
+      company: name || '',
+      team:    ('tm' in d) ? clampInt(d.tm, 3, 300, null) : null,  // ROI: team using AI
+      use:     ('u'  in d) ? clampInt(d.u, 1, 4, null)    : null,  // ROI: usage intensity 1-4
+      growth:  ('g'  in d) ? clampInt(d.g, 10, 50, null)  : null   // ROI: growth ×10 (slider form)
+    });
+  } catch (e) { window.__TWIN = null; }   // any corruption -> generic homepage
+
+  // Hero headline personalization (textContent-safe; never markup from the blob)
+  try {
+    var T = window.__TWIN;
+    if (T && T.company) {
+      var h1 = document.querySelector('.hero-copy h1');
+      if (h1 && !document.querySelector('.twin-hello')) {
+        var hello = document.createElement('p');
+        hello.className = 'twin-hello';
+        hello.setAttribute('style', 'font-size:1.05rem;color:#22e6c6;margin:0 0 .5rem;font-weight:600;letter-spacing:.01em;');
+        hello.textContent = 'Built for the team at ' + T.company;
+        h1.parentNode.insertBefore(hello, h1);
+      }
+    }
+  } catch (e) {}
+})();
+
+/* ===== 3. ROI sandbox — "The AI Bill Trap" (deterministic, editable constants) ===== */
+(function () {
+  var team = document.getElementById('roi-team'),
+      use = document.getElementById('roi-use'),
+      growth = document.getElementById('roi-growth'),
+      cv = document.getElementById('roi-chart');
+  if (!team || !cv) return;
+  var ctx = cv.getContext('2d');
+  var USE_LABELS = ['', 'Light', 'Moderate', 'Heavy', 'Agentic'];
+  var USE_PP = [0, 15, 50, 120, 300]; // $/person/month on commercial AI, by intensity
+  function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+  function calc() {
+    var T = +team.value, U = +use.value, G = +growth.value / 10; // 1.0–5.0x growth
+    var pp = USE_PP[U], series = [], cum = 0;
+    for (var m = 1; m <= 36; m++) { cum += T * pp * (1 + (G - 1) * (m / 36)); series.push(cum); }
+    var rig = 4000 + Math.ceil(T / 25) * 2500 + (U >= 3 ? 1500 : 0);
+    var cross = 0;
+    for (var k = 0; k < series.length; k++) { if (series[k] >= rig) { cross = k + 1; break; } }
+    return { T: T, U: U, G: G, series: series, rig: rig, cross: cross, comm: series[35] };
+  }
+  function draw(d) {
+    var w = cv.clientWidth, h = 240, DPR = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = w * DPR; cv.height = h * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var pad = 36, max = Math.max(d.comm, d.rig) * 1.1 || 1;
+    var X = function (m) { return pad + (w - pad - 10) * (m / 36); };
+    var Y = function (v) { return h - 24 - (h - 38) * (v / max); };
+    ctx.strokeStyle = 'rgba(255,255,255,0.12)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(pad, h - 24); ctx.lineTo(w - 10, h - 24); ctx.stroke();
+    ctx.strokeStyle = '#22e6c6'; ctx.lineWidth = 2.5;
+    ctx.beginPath(); ctx.moveTo(X(0), Y(d.rig)); ctx.lineTo(X(36), Y(d.rig)); ctx.stroke();
+    ctx.strokeStyle = '#ff3d9d'; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(X(0), Y(0));
+    for (var m = 1; m <= 36; m++) ctx.lineTo(X(m), Y(d.series[m - 1]));
+    ctx.stroke();
+    if (d.cross) { ctx.fillStyle = '#f0c850'; ctx.beginPath(); ctx.arc(X(d.cross), Y(d.rig), 4, 0, 6.2832); ctx.fill(); }
+    ctx.font = '600 12px Inter,sans-serif';
+    ctx.fillStyle = '#ff3d9d'; ctx.fillText('Commercial AI bill', pad + 4, 16);
+    ctx.fillStyle = '#22e6c6'; ctx.fillText('Your local rig (flat)', pad + 4, 32);
+    ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '11px Inter,sans-serif';
+    ctx.fillText('now', pad - 6, h - 9); ctx.fillText('3 yrs', w - 34, h - 9);
+  }
+  function render() {
+    var d = calc();
+    document.getElementById('roi-team-out').textContent = d.T + ' people';
+    document.getElementById('roi-use-out').textContent = USE_LABELS[d.U] + (d.U >= 4 ? ' (10–100× tokens)' : '');
+    document.getElementById('roi-growth-out').textContent = d.G.toFixed(1) + '×';
+    draw(d);
+    var save = d.comm - d.rig;
+    document.getElementById('roi-result').innerHTML =
+      '<p>Commercial AI, 3-yr total: <span class="warn">' + fmt(d.comm) + ' and climbing</span> — the bill rises every month your team leans in.</p>' +
+      '<p>Your local rig: <span class="big">' + fmt(d.rig) + '</span> one-time' + (d.cross ? ', pays for itself in <b>' + d.cross + ' months</b>' : '') + '. Solar after that — effectively free.</p>' +
+      (save > 0 ? '<p>You keep <span class="big">' + fmt(save) + '</span> over 3 years.</p>' : '');
+  }
+  [team, use, growth].forEach(function (el) { el.addEventListener('input', render); });
+  window.addEventListener('resize', function () { clearTimeout(window.__rrz); window.__rrz = setTimeout(render, 150); });
+  // Living Twin: pre-fill the sliders with the prospect's numbers before the first paint
+  (function () {
+    var T = window.__TWIN; if (!T) return;
+    if (T.team   != null) team.value   = T.team;
+    if (T.use    != null) use.value    = T.use;
+    if (T.growth != null) growth.value = T.growth;
+  })();
+  render();
+})();
+</script>
+
+<!-- the exhibits (js/exhibits.js) + Charlotte the barn spider roaming the page (js/charlotte.js) -->
+<script src="js/argos.js" defer></script>
+<script src="js/orbplan.js" defer></script>
+<script src="js/exhibits.js" defer></script>
+<script src="js/termites.js" defer></script>
+<script src="js/guide.js" defer></script>
+<script src="js/charlotte.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Argos — Insect Zoo mascot mark">
+  <defs>
+    <linearGradient id="case" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3c50"/>
+      <stop offset="1" stop-color="#16212e"/>
+    </linearGradient>
+    <linearGradient id="lcd" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c3a30"/>
+      <stop offset="1" stop-color="#06231d"/>
+    </linearGradient>
+    <filter id="g" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="1.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="crown"><path d="M26 34 C 24 14, 76 14, 74 34 Z"/></clipPath>
+  </defs>
+
+  <!-- solar ball-cap -->
+  <path d="M30 30 C 15 33, 11 42, 26 43 C 37 44, 45 33, 40 28 Z" fill="#0c2233" stroke="#2a4a5e" stroke-width="1"/>
+  <path d="M26 34 C 24 14, 76 14, 74 34 Z" fill="#112c3e" stroke="#caa63a" stroke-width="1.4"/>
+  <g clip-path="url(#crown)" stroke="#f0c850" stroke-width="1" opacity="0.85">
+    <line x1="40" y1="14" x2="40" y2="34"/>
+    <line x1="50" y1="12" x2="50" y2="34"/>
+    <line x1="60" y1="14" x2="60" y2="34"/>
+    <line x1="28" y1="24" x2="72" y2="24"/>
+  </g>
+  <circle cx="50" cy="15" r="2.6" fill="#d8dee8" stroke="#8b97a8" stroke-width="0.7"/>
+
+  <!-- calculator case -->
+  <rect x="16" y="32" width="68" height="60" rx="12" fill="url(#case)" stroke="#5c6677" stroke-width="2.4"/>
+
+  <!-- LCD face -->
+  <rect x="24" y="40" width="52" height="27" rx="6" fill="url(#lcd)" stroke="#3fe0bf" stroke-width="1.5"/>
+  <g filter="url(#g)" fill="#3fe0bf">
+    <rect x="37" y="46" width="7" height="12" rx="3"/>
+    <rect x="56" y="46" width="7" height="12" rx="3"/>
+    <path d="M39 61 Q50 67 61 61" fill="none" stroke="#3fe0bf" stroke-width="2.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- keypad hint -->
+  <g>
+    <rect x="26" y="73" width="11" height="7" rx="2" fill="#cfd6e0"/>
+    <rect x="40" y="73" width="11" height="7" rx="2" fill="#cfd6e0"/>
+    <rect x="54" y="73" width="11" height="7" rx="2" fill="#22e6c6"/>
+    <rect x="26" y="83" width="11" height="7" rx="2" fill="#cfd6e0"/>
+    <rect x="40" y="83" width="11" height="7" rx="2" fill="#cfd6e0"/>
+    <rect x="54" y="83" width="11" height="7" rx="2" fill="#ff9d3d"/>
+  </g>
+</svg>

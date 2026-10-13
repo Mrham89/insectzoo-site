@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Insect Zoo</title>
+  <meta name="description" content="Insights on on-premise AI, embedded systems, agricultural IoT, and engineering from Johnathan Hamaker.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="argos-mark.svg">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="argos-mark.svg" class="logo-mark" alt="Argos"><span class="pink">I</span>nsect <span class="gold">Z</span>oo</a>
+    <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
+    <ul>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero" style="min-height: 40vh;">
+  <p class="section-label">Blog</p>
+  <h1>Notes from the <span class="highlight">Lab</span></h1>
+  <p class="subtitle">Lessons learned building AI infrastructure, embedded systems, and agricultural technology.</p>
+</div>
+
+<section id="posts">
+  <!-- New posts go above this marker, newest first. -->
+  <!-- POST_INSERT_MARKER -->
+
+  <article class="blog-post" id="post-2026-04-02-launch">
+    <p class="post-date">April 2, 2026</p>
+    <h2><a href="posts/2026-04-02-why-your-data-shouldnt-leave-the-building.html">Why Your Manufacturing Data Shouldn't Leave the Building</a></h2>
+    <p class="post-preview">Every time you send a query to a cloud AI service, your process parameters, quality data, and trade secrets pass through infrastructure you don't control. For aerospace, defense, and precision manufacturing — that's a risk most companies can't afford to take.</p>
+    <a href="posts/2026-04-02-why-your-data-shouldnt-leave-the-building.html" class="learn-more">Read more &rarr;</a>
+  </article>
+
+</section>
+
+<footer>
+  <p>&copy; 2026 FarmHub LLC. All rights reserved. &nbsp;|&nbsp; Washington State &nbsp;|&nbsp; <a href="mailto:wafarmhub@gmail.com">wafarmhub@gmail.com</a></p>
+</footer>
+
+<!-- Charlotte the barn spider roams the page (js/charlotte.js) -->
+<script src="js/argos.js" defer></script>
+<script src="js/orbplan.js" defer></script>
+<script src="js/charlotte.js" defer></script>
+</body>
+</html>

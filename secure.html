@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insect Zoo — You followed a link. Nothing bad happened.</title>
+  <meta name="description" content="A scoped, independent web & API penetration test for companies facing SOC 2 or an enterprise security review. Fixed scope, fixed fee, 2–3 weeks — plus the detection rules for what we find. Washington State.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="argos-mark.svg">
+  <style>
+    /* Spot-the-phish click-to-enlarge decoy (self-contained, security flow only) */
+    .phish-figure{max-width:520px;margin:1.5rem auto 0;cursor:zoom-in;display:block;position:relative;
+      border:1px solid rgba(34,230,198,.3);border-radius:14px;padding:14px;background:rgba(255,255,255,.02);
+      transition:transform .15s ease,border-color .15s ease}
+    .phish-figure:hover{transform:scale(1.02);border-color:#22e6c6}
+    .phish-figure svg{width:100%;height:auto;display:block;border-radius:8px}
+    .phish-hint{text-align:center;color:#22e6c6;font-weight:600;margin-top:.6rem;font-size:.95rem}
+    .phish-lightbox{position:fixed;inset:0;background:rgba(4,8,14,.93);display:flex;align-items:center;
+      justify-content:center;flex-direction:column;z-index:9999;padding:1.5rem}
+    .phish-lightbox[hidden]{display:none}
+    .phish-lightbox svg{width:min(760px,94vw);height:auto;border-radius:10px;box-shadow:0 12px 60px rgba(0,0,0,.6)}
+    .phish-answer{color:#e8fbf6;max-width:760px;text-align:center;margin-top:1.1rem;font-size:1rem;line-height:1.6}
+    .phish-answer .big{color:#22e6c6;font-weight:700}
+    .phish-close{position:absolute;top:18px;right:24px;background:none;border:1px solid rgba(255,255,255,.35);
+      color:#fff;border-radius:8px;padding:.45rem .85rem;cursor:pointer;font-size:.95rem}
+    .phish-close:hover{border-color:#22e6c6;color:#22e6c6}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><img src="argos-mark.svg" class="logo-mark" alt="Argos"><span class="pink">I</span>nsect <span class="gold">Z</span>oo</a>
+    <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
+    <ul>
+      <li><a href="#the-click">The Click</a></li>
+      <li><a href="#what-they-look-for">The Review</a></li>
+      <li><a href="#the-test">The Test</a></li>
+      <li><a href="index.html">Insect Zoo</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO: the safe click — living sea + Argos -->
+<div class="hero-stage" id="hero-stage">
+  <canvas id="swarm"></canvas>
+
+  <div id="argos-guide" class="argos-guide">
+    <div class="argos-bubble" id="argos-bubble"></div>
+    <img id="argos" class="argos-figure" src="argos.svg" alt="Argos, the Insect Zoo keeper and your guide">
+  </div>
+
+  <div class="hero-copy">
+    <div class="brandmark"><span class="word"><span class="ai pink">I</span>nsect <span class="ai gold">Z</span>oo</span></div>
+
+    <h1>You followed a link. <span class="highlight">Nothing bad happened.</span></h1>
+    <p class="subtitle">If I were the bad guy, that click is where it would have gone wrong &mdash; a fake login, a quiet compromise. Instead, you're here. That pause-before-you-click instinct is exactly the muscle a tested security program builds.</p>
+    <p class="hero-caption"><span class="dot"></span> Move your cursor &mdash; that's sunlight. Each speck is an autonomous agent watching the water. <strong>This is local AI &mdash; the same kind that can watch your traffic for the patterns an attacker leaves.</strong></p>
+    <div class="cta-row">
+      <button type="button" class="btn btn-primary btn-xl" id="start-journey">Show me what that's worth &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- THE SAFE CLICK -->
+<section id="the-click">
+  <p class="section-label">The Safe Click</p>
+  <h2>Most breaches start with one click.</h2>
+  <p class="section-desc">The majority of intrusions still begin the same way: a convincing email, a single click, and someone's already inside. You just clicked a link from someone you've traded a couple of emails with &mdash; and it was safe. The gap between a tested team and a target is whether that's true by luck or by design.</p>
+</section>
+
+<!-- SPOT THE PHISH — curiosity-driven click-to-enlarge decoy (the click IS the demo) -->
+<section id="spot">
+  <p class="section-label">Try It</p>
+  <h2>One of these is a phishing email.</h2>
+  <p class="section-desc">Most people can't tell at a glance. Click the image to see it full-size &mdash; can you spot the fake?</p>
+
+  <figure class="phish-figure" id="phish-thumb" tabindex="0" role="button" aria-label="Two near-identical emails, one is a phishing fake — click to enlarge">
+    <svg viewBox="0 0 520 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two emails preview">
+      <rect width="520" height="250" rx="10" fill="#0c1420"/>
+      <g transform="translate(24,22)">
+        <rect width="472" height="92" rx="8" fill="#14253722" stroke="rgba(255,255,255,.12)"/>
+        <circle cx="26" cy="30" r="12" fill="#22e6c6"/>
+        <text x="48" y="29" fill="#e8fbf6" font-family="Inter,sans-serif" font-size="14" font-weight="700">Microsoft account team</text>
+        <text x="48" y="49" fill="#8fb3b0" font-family="Inter,sans-serif" font-size="12">account-security@microsoft.com</text>
+        <text x="48" y="75" fill="#cfeee8" font-family="Inter,sans-serif" font-size="13">New sign-in from Windows &#183; review it</text>
+      </g>
+      <g transform="translate(24,128)">
+        <rect width="472" height="92" rx="8" fill="#14253722" stroke="rgba(255,255,255,.12)"/>
+        <circle cx="26" cy="30" r="12" fill="#22e6c6"/>
+        <text x="48" y="29" fill="#e8fbf6" font-family="Inter,sans-serif" font-size="14" font-weight="700">Microsoft account team</text>
+        <text x="48" y="49" fill="#8fb3b0" font-family="Inter,sans-serif" font-size="12">account-security@micros0ft-support.com</text>
+        <text x="48" y="75" fill="#cfeee8" font-family="Inter,sans-serif" font-size="13">URGENT: account suspended in 24h &#8212; verify now</text>
+      </g>
+      <g transform="translate(486,210)" opacity="0.9">
+        <circle cx="0" cy="0" r="15" fill="none" stroke="#f0c850" stroke-width="3"/>
+        <line x1="10" y1="10" x2="22" y2="22" stroke="#f0c850" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <p class="phish-hint">&#128270; Click to see it full-size &rarr;</p>
+  </figure>
+</section>
+
+<!-- WHAT AN ENTERPRISE REVIEW LOOKS FOR (general / educational — never company-specific) -->
+<section id="what-they-look-for">
+  <p class="section-label">The Enterprise Review</p>
+  <h2>Before a big customer signs, they check your security.</h2>
+  <p class="section-desc">Enterprise procurement and SOC&nbsp;2 auditors expect more than a scan &mdash; they expect an <em>independent</em> test, run by someone who isn't you. Here's the surface that review tends to look at first, for any company running a real product:</p>
+
+  <div class="features-list">
+    <div class="feature">
+      <div class="icon">&#127760;</div>
+      <div>
+        <h4>The web app</h4>
+        <p>Authentication, session handling, access controls, and the everyday flows your customers touch &mdash; the most-probed surface in any review.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="icon">&#128268;</div>
+      <div>
+        <h4>The API</h4>
+        <p>The endpoints behind the app, where authorization gaps and data-exposure issues most often hide from a casual scan.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="icon">&#128273;</div>
+      <div>
+        <h4>Identity &amp; access</h4>
+        <p>How accounts, roles, and tokens are issued and revoked &mdash; the controls an auditor asks you to evidence.</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="icon">&#128202;</div>
+      <div>
+        <h4>The independent test</h4>
+        <p>For SOC&nbsp;2 Type&nbsp;II, an external penetration test every audit cycle &mdash; a predictable yearly need most teams scramble for at the last minute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE TEST (the offer) -->
+<section id="the-test" class="cta-section">
+  <p class="section-label">The Test</p>
+  <h2>A scoped, independent web &amp; API penetration test.</h2>
+  <p class="section-desc">Fixed scope, fixed fee, about 2&ndash;3 weeks &mdash; manual testing by one accountable engineer, not just an automated scan you could run yourself.</p>
+
+  <div class="services-grid">
+    <div class="service-card" style="border-color: var(--cyan);">
+      <div class="icon">&#128737;</div>
+      <h3>The findings report</h3>
+      <p>Clear, prioritized, reproducible &mdash; the kind an auditor or enterprise customer accepts, with fixes you can actually action.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">&#128225;</div>
+      <h3>Detection rules included</h3>
+      <p>Alongside the report I hand you Sigma/Suricata detection rules for what I find &mdash; so if someone tries those same patterns later, you <em>see</em> it.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">&#127482;&#127480;</div>
+      <h3>On-shore, your data stays home</h3>
+      <p>One engineer in Washington State, Pacific time. Your data never leaves the country, and nothing is touched without a signed scope and rules of engagement.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT (reply-first) -->
+<section id="contact" class="cta-section">
+  <p class="section-label">Get Started</p>
+  <h2>If the timing fits, let's scope it.</h2>
+  <p>No deck, no pressure &mdash; just whether an independent test makes sense before your next audit window or enterprise review.</p>
+  <p style="font-size:1.2rem;margin:1rem 0 .3rem;"><strong>Just reply to my email</strong> &mdash; or grab a 20-minute scoping call.</p>
+  <p style="font-size:1.05rem; color: var(--gray-light); line-height: 2;">
+    Johnathan Hamaker &middot; Insect Zoo Security (FarmHub LLC)<br>
+    wafarmhub@gmail.com &middot; Washington State
+  </p>
+</section>
+
+<!-- LIGHTBOX: the enlarged, annotated reveal (the payoff for the curious click) -->
+<div class="phish-lightbox" id="phish-lightbox" hidden>
+  <button type="button" class="phish-close" id="phish-close" aria-label="Close">Close &#10005;</button>
+  <svg viewBox="0 0 760 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The phishing email revealed, annotated">
+    <rect width="760" height="470" rx="12" fill="#0c1420"/>
+    <text x="32" y="40" fill="#8fb3b0" font-family="Inter,sans-serif" font-size="14" font-weight="600" letter-spacing="1">SPOT THE FAKE</text>
+    <!-- real -->
+    <g transform="translate(32,58)">
+      <rect width="696" height="150" rx="10" fill="#14253722" stroke="rgba(34,230,198,.5)" stroke-width="1.5"/>
+      <circle cx="34" cy="40" r="16" fill="#22e6c6"/>
+      <text x="64" y="38" fill="#e8fbf6" font-family="Inter,sans-serif" font-size="18" font-weight="700">Microsoft account team</text>
+      <text x="64" y="64" fill="#8fb3b0" font-family="Inter,sans-serif" font-size="15">account-security@microsoft.com</text>
+      <text x="64" y="98" fill="#cfeee8" font-family="Inter,sans-serif" font-size="16">New sign-in from Windows &#183; review it</text>
+      <text x="64" y="128" fill="#22e6c6" font-family="Inter,sans-serif" font-size="14" font-weight="700">&#10003; Real &#8212; microsoft.com, no pressure</text>
+    </g>
+    <!-- fake -->
+    <g transform="translate(32,228)">
+      <rect width="696" height="160" rx="10" fill="#2a121a" stroke="#ff3d9d" stroke-width="1.5"/>
+      <circle cx="34" cy="40" r="16" fill="#22e6c6"/>
+      <text x="64" y="38" fill="#e8fbf6" font-family="Inter,sans-serif" font-size="18" font-weight="700">Microsoft account team</text>
+      <text x="64" y="64" fill="#ff9ec6" font-family="Inter,sans-serif" font-size="15">account-security@micros0ft-support.com</text>
+      <text x="64" y="98" fill="#ffd7e6" font-family="Inter,sans-serif" font-size="16">URGENT: account suspended in 24h &#8212; verify now</text>
+      <rect x="278" y="50" width="150" height="22" rx="5" fill="none" stroke="#ff3d9d" stroke-width="2"/>
+      <text x="64" y="128" fill="#ff3d9d" font-family="Inter,sans-serif" font-size="14" font-weight="700">&#10007; Lookalike domain: &#8220;0&#8221; not &#8220;o&#8221;, and not a microsoft.com address</text>
+      <text x="64" y="148" fill="#ff3d9d" font-family="Inter,sans-serif" font-size="14" font-weight="700">&#10007; Manufactured urgency + a 24-hour deadline = pressure to skip thinking</text>
+    </g>
+    <text x="380" y="430" text-anchor="middle" fill="#8fb3b0" font-family="Inter,sans-serif" font-size="14">The tells are tiny. Under pressure, almost everyone misses them.</text>
+  </svg>
+  <p class="phish-answer">That instinct to <span class="big">click an image just to see it better</span> is human &mdash; and it's all some attacks need. Building the muscle to pause is what a tested team has. <span class="big">You're safe here.</span></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2026 Insect Zoo &middot; FarmHub LLC. All rights reserved. &nbsp;|&nbsp; Washington State &nbsp;|&nbsp; <a href="mailto:wafarmhub@gmail.com">wafarmhub@gmail.com</a></p>
+</footer>
+
+<!-- Insect Zoo: living agent-swarm sea + Argos the guide. Security flow — NAME-ONLY personalization. -->
+<script>
+/* ===== 0. Name-only personalization from one ?t= blob (security flow) =====
+   We greet by company name ONLY. We deliberately render NO sourced fact about
+   the prospect's systems (the cardinal pentest-outreach rule) — the experience is
+   about the safe click + general security education, not a claim we probed them.
+   Absent/corrupt blob => __TWIN null => generic page. */
+(function () {
+  window.__TWIN = null;
+  try {
+    var p = new URLSearchParams(location.search).get('t');
+    if (!p) return;
+    var b64 = p.replace(/-/g, '+').replace(/_/g, '/');
+    while (b64.length % 4) b64 += '=';
+    var d = JSON.parse(decodeURIComponent(escape(atob(b64))));
+    if (!d || typeof d !== 'object') return;
+    var name = (typeof d.c === 'string') ? d.c.slice(0, 60).replace(/[<>]/g, '').trim() : '';
+    window.__TWIN = Object.freeze({ company: name || '' });   // name ONLY; tm/u/g ignored here
+  } catch (e) { window.__TWIN = null; }
+
+  try {
+    var T = window.__TWIN;
+    if (T && T.company) {
+      var h1 = document.querySelector('.hero-copy h1');
+      if (h1 && !document.querySelector('.twin-hello')) {
+        var hello = document.createElement('p');
+        hello.className = 'twin-hello';
+        hello.setAttribute('style', 'font-size:1.05rem;color:#22e6c6;margin:0 0 .5rem;font-weight:600;letter-spacing:.01em;');
+        hello.textContent = 'For the team at ' + T.company;
+        h1.parentNode.insertBefore(hello, h1);
+      }
+    }
+  } catch (e) {}
+})();
+
+/* ===== 1. Living sea — cursor = sunlight, each speck an agent ===== */
+(function () {
+  var cv = document.getElementById('swarm');
+  var stage = document.getElementById('hero-stage');
+  var guide = document.getElementById('argos-guide');
+  if (!cv || !stage) return;
+  var ctx = cv.getContext('2d');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 0, H = 0, DPR = 1, cells = [], t = 0, raf = 0, idle = 0;
+  var light = { x: 0, y: 0, tx: 0, ty: 0, has: false };
+  var gx = 0, gy = 0;
+  window.__journey = false;
+
+  function seed(n) {
+    cells = [];
+    for (var i = 0; i < n; i++) cells.push({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+      len: 6 + Math.random() * 9, ph: Math.random() * 6.28, ang: 0
+    });
+  }
+  function titleCenter() {
+    var b = stage.querySelector('.brandmark');
+    if (!b) return { x: W * 0.5, y: H * 0.44 };
+    var sr = stage.getBoundingClientRect(), br = b.getBoundingClientRect();
+    return { x: br.left - sr.left + br.width / 2, y: br.top - sr.top + br.height / 2 };
+  }
+  function resize() {
+    var r = stage.getBoundingClientRect();
+    W = r.width; H = r.height; DPR = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = W * DPR; cv.height = H * DPR;
+    cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    var n = Math.round(Math.min(120, Math.max(36, W * H / 15000)));
+    if (cells.length !== n) seed(n);
+    if (!light.has) { var c0 = titleCenter(); light.tx = c0.x; light.ty = c0.y; light.x = c0.x; light.y = c0.y; }
+  }
+  stage.addEventListener('pointermove', function (e) {
+    var r = stage.getBoundingClientRect();
+    light.tx = e.clientX - r.left; light.ty = e.clientY - r.top; light.has = true; idle = 0;
+  });
+  stage.addEventListener('pointerleave', function () { light.has = false; });
+
+  function frame() {
+    t += 0.016; idle++;
+    if (!light.has || idle > 200) {
+      var c = titleCenter();
+      light.tx = c.x + Math.cos(t * 0.5) * Math.min(W * 0.12, 120);
+      light.ty = c.y + Math.sin(t * 0.7) * Math.min(H * 0.07, 55);
+    }
+    light.x += (light.tx - light.x) * 0.06;
+    light.y += (light.ty - light.y) * 0.06;
+
+    ctx.clearRect(0, 0, W, H);
+    var g = ctx.createRadialGradient(light.x, light.y, 0, light.x, light.y, 220);
+    g.addColorStop(0, 'rgba(34,230,198,0.18)'); g.addColorStop(1, 'rgba(34,230,198,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+
+    for (var i = 0; i < cells.length; i++) {
+      var c = cells[i];
+      var dx = light.x - c.x, dy = light.y - c.y, d = Math.sqrt(dx * dx + dy * dy) + 0.01;
+      var lit = Math.max(0, 1 - d / 330);
+      var pull = 0.012 * (0.3 + lit);
+      c.vx += dx / d * pull; c.vy += dy / d * pull;
+      c.vx += Math.cos(c.ph + t) * 0.004; c.vy += Math.sin(c.ph + t * 0.9) * 0.004;
+      c.vx *= 0.97; c.vy *= 0.97;
+      var sp = Math.sqrt(c.vx * c.vx + c.vy * c.vy), max = 0.4 + lit * 1.5;
+      if (sp > max) { c.vx = c.vx / sp * max; c.vy = c.vy / sp * max; }
+      c.x += c.vx; c.y += c.vy; c.ang = Math.atan2(c.vy, c.vx);
+      if (c.x < -20) c.x = W + 20; if (c.x > W + 20) c.x = -20;
+      if (c.y < -20) c.y = H + 20; if (c.y > H + 20) c.y = -20;
+      var glow = 0.22 + lit * 0.78;
+      ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.ang);
+      ctx.beginPath(); ctx.ellipse(0, 0, c.len, c.len * 0.34, 0, 0, 6.2832);
+      ctx.fillStyle = 'rgba(' + Math.round(120 + 130 * lit) + ',235,' + Math.round(205 + 30 * lit) + ',' + (0.12 + 0.5 * glow) + ')';
+      ctx.shadowColor = 'rgba(34,230,198,' + (0.6 * lit) + ')'; ctx.shadowBlur = 12 * lit;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = 'rgba(220,255,250,' + (0.12 + 0.4 * lit) + ')'; ctx.lineWidth = 0.6;
+      ctx.beginPath(); ctx.moveTo(-c.len * 0.8, 0); ctx.lineTo(c.len * 0.8, 0); ctx.stroke();
+      ctx.restore();
+    }
+
+    if (guide && !window.__journey) {
+      var gw = guide.offsetWidth, gh = guide.offsetHeight;
+      var tx = light.x - gw / 2, ty = light.y - gh + 12;
+      gx += (tx - gx) * 0.07; gy += (ty - gy) * 0.07;
+      guide.style.transform = 'translate(' + gx.toFixed(1) + 'px,' + gy.toFixed(1) + 'px)';
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function staticRender() {
+    resize(); ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < cells.length; i++) {
+      var c = cells[i];
+      ctx.save(); ctx.translate(c.x, c.y);
+      ctx.beginPath(); ctx.ellipse(0, 0, c.len, c.len * 0.34, 0, 0, 6.2832);
+      ctx.fillStyle = 'rgba(120,230,210,0.28)'; ctx.fill(); ctx.restore();
+    }
+    if (guide) guide.style.transform = 'translate(' + (W * 0.5 - guide.offsetWidth / 2) + 'px,' + (H * 0.3) + 'px)';
+  }
+  window.addEventListener('resize', function () { clearTimeout(window.__nrz); window.__nrz = setTimeout(resize, 150); });
+  resize();
+  if (reduce) staticRender();
+  else { gx = W * 0.5; gy = H * 0.3; raf = requestAnimationFrame(frame); }
+})();
+
+/* ===== 2. Argos the guide — safe-click greeting + section bubbles ===== */
+(function () {
+  var guide = document.getElementById('argos-guide');
+  var bubble = document.getElementById('argos-bubble');
+  var start = document.getElementById('start-journey');
+  if (!guide || !bubble) return;
+
+  function say(html) { bubble.innerHTML = html; bubble.classList.add('show'); }
+
+  setTimeout(function () {
+    var T = window.__TWIN;
+    if (T && T.company) {
+      say("Welcome, " + T.company + " — I'm Argos. You clicked a stranger's link and landed somewhere safe. Let me show you what that's worth.");
+    } else {
+      say("Hi — I'm Argos. You clicked a stranger's link and landed somewhere safe ☀ let me show you what that's worth.");
+    }
+  }, 1200);
+
+  var TOUR = {
+    'the-click':           "One click is how most breaches start. Yours was safe — that's the whole point.",
+    'spot':                "Go on — click the image to see it bigger. Everyone does.",
+    'what-they-look-for':  "This is the surface an enterprise review or SOC 2 auditor checks first.",
+    'the-test':            "A scoped, independent test — fixed fee, plus the detection rules for what I find.",
+    'contact':             "No deck. Just whether the timing fits before your next audit."
+  };
+
+  function beginJourney() {
+    if (window.__journey) return;
+    window.__journey = true;
+    guide.classList.add('fixed');
+    say("Follow me — I'll keep it short. ↓");
+    var first = document.getElementById('the-click');
+    if (first) first.scrollIntoView({ behavior: 'smooth' });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) { if (e.isIntersecting && TOUR[e.target.id]) say(TOUR[e.target.id]); });
+      }, { threshold: 0.4 });
+      Object.keys(TOUR).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+    }
+  }
+  if (start) start.addEventListener('click', beginJourney);
+})();
+
+/* ===== 3. Spot-the-phish — curiosity click on the image → enlarge + a POSITIVE lesson ===== */
+(function () {
+  var thumb = document.getElementById('phish-thumb');
+  var box = document.getElementById('phish-lightbox');
+  var closeBtn = document.getElementById('phish-close');
+  var bubble = document.getElementById('argos-bubble');
+  if (!thumb || !box) return;
+  function say(html) { if (bubble) { bubble.innerHTML = html; bubble.classList.add('show'); } }
+  var taught = false;
+  function open() {
+    box.hidden = false;
+    if (!taught) {
+      taught = true;
+      say("You clicked an image just to see it better — the most human reflex there is. It's also all some attacks need: the iMessage and Chrome breaches fired the instant an image was <em>rendered</em>, no second click. You're completely safe here. Now — can you spot the fake?");
+    }
+  }
+  function hide() { box.hidden = true; }
+  thumb.addEventListener('click', open);
+  thumb.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+  if (closeBtn) closeBtn.addEventListener('click', hide);
+  box.addEventListener('click', function (e) { if (e.target === box) hide(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+})();
+</script>
+
+<!-- Charlotte the barn spider roams the page (js/charlotte.js) -->
+<script src="js/argos.js" defer></script>
+<script src="js/orbplan.js" defer></script>
+<script src="js/charlotte.js" defer></script>
+</body>
+</html>

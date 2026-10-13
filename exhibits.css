@@ -1,0 +1,129 @@
+/* Insect Zoo — full-screen exhibits (loads after style.css; adds only .exhibit* and body.zoo-home rules) */
+html:has(body.zoo-home) { scroll-snap-type: y proximity; scroll-padding-top: 64px; }
+
+.exhibit {
+  position: relative;
+  height: 100vh; height: 100svh;
+  min-height: 520px;
+  max-width: none; margin: 0; padding: 0;   /* override style.css's boxed `section` */
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: radial-gradient(ellipse at 50% 45%, #16263a 0%, #0b121c 75%);
+}
+.exhibit-sim {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block; z-index: 0;
+  touch-action: pan-y;
+  cursor: none;
+}
+.exhibit-stat {
+  position: absolute; top: 80px; right: 16px; z-index: 2;
+  font: 600 0.85rem/1.4 var(--font-mono);
+  color: var(--cyan);
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+.exhibit-overlay {
+  position: absolute; left: 16px; bottom: 2rem; z-index: 2;
+  max-width: 520px;
+  padding: 1.1rem 1.3rem;
+  background: rgba(13, 17, 23, 0.72);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--navy-mid);
+  border-radius: 14px;
+  pointer-events: none;
+}
+.exhibit-overlay a { pointer-events: auto; }
+.exhibit-tag {
+  font: 700 0.75rem/1.4 var(--font-mono);
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+.exhibit-overlay h2 { font-size: 1.7rem; line-height: 1.2; margin-bottom: 0.5rem; }
+.exhibit-line { color: var(--white); font-size: 1rem; line-height: 1.55; margin-bottom: 0.5rem; }
+.exhibit-hint { color: var(--gray-light); font-size: 0.9rem; margin-bottom: 0.6rem; }
+.exhibit-overlay .learn-more { font-weight: 700; }
+
+/* the hero: Charlotte's web fills the screen; the wordmark sits low so her web stays visible */
+.exhibit--hero { justify-content: flex-end; padding: 5rem 16px 3rem; }
+.exhibit--hero .exhibit-overlay {
+  position: relative; left: auto; bottom: auto;
+  max-width: 720px; margin: 0 auto;
+  background: none; border: 0; backdrop-filter: none;
+}
+.exhibit--hero .brandmark { margin-bottom: 0.8rem; }
+.exhibit--hero .brandmark .word { font-size: clamp(2.6rem, 9vw, 5.2rem); }
+.exhibit--hero h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); }
+.exhibit--hero .scroll-cue {
+  display: inline-block; margin-top: 0.4rem;
+  font-size: 1.6rem; color: var(--cyan);
+  animation: exhibit-bob 2s ease-in-out infinite;
+}
+@keyframes exhibit-bob { 50% { transform: translateY(6px); } }
+
+@media (max-width: 480px) {
+  .exhibit-overlay { left: 16px; right: 16px; bottom: 1rem; max-width: none; padding: 0.9rem 1rem; }
+  .exhibit-overlay h2 { font-size: 1.3rem; }
+  .exhibit-line { font-size: 0.92rem; }
+  .exhibit-stat { top: 72px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:has(body.zoo-home) { scroll-snap-type: none; }
+  .exhibit--hero .scroll-cue { animation: none; }
+}
+/* the copy panel folds to a tab (js/guide.js) so it stops hiding the sim */
+.exhibit-toggle {
+  position: absolute; top: 0.5rem; right: 0.5rem;
+  width: 2rem; height: 2rem; border-radius: 50%;
+  border: 1px solid var(--navy-mid); background: rgba(13, 17, 23, 0.85);
+  color: var(--cyan); font: 700 1.1rem/1 var(--font-mono);
+  cursor: pointer; pointer-events: auto;
+}
+.exhibit-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.exhibit-overlay { padding-right: 3rem; }
+.exhibit-overlay.is-collapsed { padding: 0.55rem 3rem 0.55rem 1rem; }
+.exhibit-overlay.is-collapsed > :not(.exhibit-tag):not(.exhibit-toggle) { display: none; }
+.exhibit-overlay.is-collapsed .exhibit-tag { margin: 0; }
+
+/* the termite exhibit's pheromone buttons (they stay usable when the panel is folded) */
+.termite-modes { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.termite-mode {
+  pointer-events: auto; cursor: pointer;
+  font: 700 0.8rem/1 var(--font-mono); color: var(--white);
+  background: rgba(13, 17, 23, 0.85); border: 1px solid var(--navy-mid); border-radius: 999px; padding: 0.4rem 0.75rem;
+}
+.termite-mode[aria-pressed="true"] { color: #0b121c; background: var(--gold); border-color: var(--gold); }
+#termites .exhibit-overlay.is-collapsed > .termite-modes { display: flex; margin: 0.4rem 0 0; }
+
+/* Argos the guide, docked bottom-right (js/guide.js) */
+body.zoo-home #argos-guide {
+  position: fixed; right: 16px; bottom: 16px; z-index: 60;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 6px;
+  max-width: 300px; pointer-events: none;
+}
+body.zoo-home #argos-guide > * { pointer-events: auto; }
+body.zoo-home #argos-guide .argos-figure { width: 96px; height: auto; cursor: pointer; filter: drop-shadow(0 0 18px rgba(34, 230, 198, 0.45)); }
+body.zoo-home #argos-guide .argos-bubble {
+  background: rgba(13, 17, 23, 0.92); border: 1px solid var(--cyan); color: #eafff9;
+  font-size: 0.85rem; line-height: 1.45; padding: 0.6rem 0.8rem; border-radius: 12px;
+  opacity: 0; transform: translateY(6px); transition: opacity 0.4s, transform 0.4s;
+}
+body.zoo-home #argos-guide .argos-bubble.show { opacity: 1; transform: none; }
+body.zoo-home #argos-guide .guide-row { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
+body.zoo-home #argos-guide .guide-jump { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; width: 100%; }
+body.zoo-home #argos-guide .guide-jump a,
+body.zoo-home #argos-guide button {
+  font: 600 0.75rem/1 var(--font-mono); color: var(--cyan); text-decoration: none; cursor: pointer;
+  background: rgba(13, 17, 23, 0.85); border: 1px solid var(--navy-mid); border-radius: 999px; padding: 0.35rem 0.6rem;
+}
+body.zoo-home #argos-guide button:disabled { opacity: 0.4; cursor: default; }
+body.zoo-home #argos-guide.is-min > :not(.argos-figure) { display: none; }
+body.zoo-home #argos-guide.is-min .argos-figure { width: 44px; }
+@media (max-width: 480px) {
+  body.zoo-home #argos-guide { right: 8px; bottom: 8px; max-width: calc(100vw - 16px); }
+  body.zoo-home #argos-guide .argos-figure { width: 44px; }
+  body.zoo-home #argos-guide .guide-row { display: none; }   /* .guide-jump and the buttons: just Argos (tap him: next exhibit) */
+  .exhibit-overlay.is-collapsed { right: auto; }
+}

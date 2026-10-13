@@ -1,0 +1,647 @@
+/* Insect Zoo — Dark Navy/Cyan Theme */
+:root {
+  --navy: #0d1117;
+  --navy-light: #141e2a;
+  --navy-mid: #1a2a3a;
+  --cyan: #22e6c6;        /* primary accent (retro teal) */
+  --cyan-dark: #14a89a;
+  --pink: #ff3d9d;       /* secondary accent (retro pink) */
+  --silver: #d2d9e4;       /* glam accent (silver trim on the A/I letters) */
+  --gold: #f0c850;         /* glam accent (gold — the "Z" in the wordmark) */
+  --white: #ffffff;
+  --gray-light: #b0b0b0;
+  --gray-dark: #6a6a6a;
+  --red-soft: #ff8080;
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --max-width: 1100px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-main);
+  background: var(--navy);
+  color: var(--white);
+  line-height: 1.7;
+  font-size: 17px;
+  overflow-x: hidden;
+}
+
+a { color: var(--cyan); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--white); }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--navy-mid);
+  z-index: 100;
+  padding: 0 2rem;
+}
+
+nav .nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+nav .logo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.5px;
+}
+
+nav .logo span { color: var(--cyan); }
+nav .logo span.pink { color: var(--pink); }
+nav .logo span.gold { color: var(--gold); }
+
+nav .logo .logo-mark {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  margin-right: 8px;
+  margin-top: -2px;
+  filter: drop-shadow(0 0 6px rgba(34, 230, 198, 0.35));
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: var(--gray-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav ul li a:hover { color: var(--cyan); }
+
+/* Mobile nav */
+.nav-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; cursor: pointer; }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  nav ul { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; width: 100%; background: var(--navy); padding: 1rem 2rem; border-bottom: 1px solid var(--navy-mid); }
+  nav ul.open { display: flex; }
+}
+
+/* === SECTIONS === */
+section {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+/* === HERO === */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 8rem 2rem 5rem;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.hero h1 .highlight { color: var(--cyan); }
+
+.hero .subtitle {
+  font-size: 1.3rem;
+  color: var(--gray-light);
+  max-width: 650px;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary { background: var(--cyan); color: var(--navy); }
+.btn-primary:hover { background: var(--white); color: var(--navy); }
+
+.btn-outline { background: transparent; color: var(--cyan); border: 2px solid var(--cyan); }
+.btn-outline:hover { background: var(--cyan); color: var(--navy); }
+
+/* === SECTION HEADERS === */
+.section-label {
+  color: var(--cyan);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.section-desc {
+  color: var(--gray-light);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+
+/* === SERVICES GRID === */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: var(--navy-light);
+  border: 1px solid var(--navy-mid);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.service-card:hover {
+  border-color: var(--cyan);
+  transform: translateY(-2px);
+}
+
+.service-card .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: var(--white);
+}
+
+.service-card p {
+  color: var(--gray-light);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.service-card .learn-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--cyan);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* === FEATURES LIST === */
+.features-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.feature {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.feature .icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.feature h4 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.feature p {
+  color: var(--gray-light);
+  font-size: 0.9rem;
+}
+
+/* === PROOF BAR === */
+.proof-bar {
+  background: var(--navy-light);
+  border-top: 1px solid var(--navy-mid);
+  border-bottom: 1px solid var(--navy-mid);
+}
+
+.proof-bar .proof-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.proof-stat .number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--cyan);
+}
+
+.proof-stat .label {
+  color: var(--gray-light);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* === ABOUT === */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+.about-grid .credentials { list-style: none; }
+.about-grid .credentials li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--navy-mid);
+  color: var(--gray-light);
+}
+.about-grid .credentials li strong { color: var(--white); }
+
+/* === CTA SECTION === */
+.cta-section {
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.cta-section h2 { margin-bottom: 1rem; }
+.cta-section p { color: var(--gray-light); margin-bottom: 2rem; font-size: 1.1rem; }
+
+/* === FOOTER === */
+footer {
+  border-top: 1px solid var(--navy-mid);
+  padding: 2rem;
+  text-align: center;
+  color: var(--gray-dark);
+  font-size: 0.85rem;
+}
+
+footer a { color: var(--gray-light); }
+footer .charlotte-toggle {
+  margin-top: 0.75rem; padding: 0.3rem 0.8rem; border: 1px solid var(--navy-mid); border-radius: 999px;
+  background: none; color: var(--gray-light); font: inherit; cursor: pointer;
+}
+footer .charlotte-toggle:hover, footer .charlotte-toggle:focus-visible { border-color: var(--cyan); color: var(--cyan); }
+
+/* === BLOG === */
+.blog-post {
+  border-bottom: 1px solid var(--navy-mid);
+  padding: 2rem 0;
+}
+
+.blog-post:last-child { border-bottom: none; }
+
+.blog-post .post-date {
+  color: var(--gray-dark);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-post h2 a { color: var(--white); }
+.blog-post h2 a:hover { color: var(--cyan); }
+
+.blog-post .post-preview {
+  color: var(--gray-light);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+}
+
+/* === TERMINAL + STARFIELD HERO === */
+.hero-stage {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  /* extra bottom padding lifts the title into the upper-center, seen on open */
+  padding: 5rem 1.5rem 9rem;
+  background: radial-gradient(ellipse at 50% 42%, #0e2436 0%, var(--navy) 72%);
+}
+
+/* the living Insect Zoo sea — agent swarm canvas behind the copy */
+.hero-stage #swarm {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0; display: block;
+}
+
+/* drifting star layers (parallax) */
+.hero-stage .stars,
+.hero-stage .stars2,
+.hero-stage .stars3 {
+  position: absolute;
+  top: -100%; left: 0; right: 0; bottom: 0;
+  height: 200%;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-stage .stars {
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, #ffffff, transparent),
+    radial-gradient(1px 1px at 120px 90px, #d7f3ff, transparent),
+    radial-gradient(1px 1px at 200px 160px, #ffffff, transparent),
+    radial-gradient(1.5px 1.5px at 80px 200px, #bfe9ff, transparent),
+    radial-gradient(1px 1px at 300px 60px, #ffffff, transparent);
+  background-size: 350px 350px;
+  animation: drift 120s linear infinite;
+  opacity: 0.7;
+}
+.hero-stage .stars2 {
+  background-image:
+    radial-gradient(1.5px 1.5px at 50px 80px, #ffffff, transparent),
+    radial-gradient(1px 1px at 180px 40px, #cfeeff, transparent),
+    radial-gradient(2px 2px at 260px 220px, #ffffff, transparent),
+    radial-gradient(1px 1px at 340px 140px, #a9def7, transparent);
+  background-size: 500px 500px;
+  animation: drift 80s linear infinite;
+  opacity: 0.55;
+}
+.hero-stage .stars3 {
+  background-image:
+    radial-gradient(2px 2px at 90px 120px, #ffffff, transparent),
+    radial-gradient(2.5px 2.5px at 280px 300px, #e9f8ff, transparent);
+  background-size: 700px 700px;
+  animation: drift 55s linear infinite;
+  opacity: 0.5;
+}
+@keyframes drift { from { transform: translateY(0); } to { transform: translateY(50%); } }
+
+/* pink/teal sparkles */
+.hero-stage .spark {
+  position: absolute;
+  z-index: 1;
+  color: var(--cyan);
+  font-size: 1rem;
+  opacity: 0.5;
+  animation: twinkle 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-stage .spark.pink { color: var(--pink); }
+.hero-stage .spark.silver { color: var(--silver); }
+@keyframes twinkle { 0%,100% { opacity: 0.15; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.15); } }
+
+/* creative, glowing brand wordmark (the graphic centerpiece) */
+.hero-stage .brandmark {
+  position: relative; z-index: 2;
+  font-family: var(--font-main);
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0.3em;
+  line-height: 1; margin-bottom: 1.6rem;
+}
+/* "Insect Zoo" — big white→cyan gradient letters with a soft glow */
+.hero-stage .brandmark .word {
+  font-size: clamp(3.6rem, 13vw, 7.5rem);
+  font-weight: 800; letter-spacing: -2.5px;
+  background: linear-gradient(180deg, #ffffff 0%, #b8fff3 52%, var(--cyan) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 28px rgba(34,230,198,0.45));
+}
+/* accent initials in the wordmark — pink "I" (gold "Z" below) neon letters with a silver glam outline */
+.hero-stage .brandmark .word .ai {
+  -webkit-text-fill-color: var(--pink);
+  color: var(--pink);
+  -webkit-text-stroke: 1.5px var(--silver);
+  text-shadow: 0 0 28px rgba(255,61,157,0.85);
+  padding: 0 0.06em;
+}
+/* gold "Z" in Insect Zoo */
+.hero-stage .brandmark .word .ai.gold {
+  -webkit-text-fill-color: var(--gold);
+  color: var(--gold);
+  text-shadow: 0 0 28px rgba(240,200,80,0.85);
+}
+/* embed a small infinity ∞ in the apex negative-space of the lambda A */
+.hero-stage .brandmark .word .ai:not(.pink):not(.gold) { position: relative; }
+.hero-stage .brandmark .word .ai:not(.pink):not(.gold)::after {
+  content: "\221E";
+  position: absolute;
+  left: 50%; top: 60%;
+  transform: translate(-50%, -50%);
+  font-size: 0.30em;
+  font-weight: 700;
+  color: var(--gold);
+  -webkit-text-fill-color: var(--gold);
+  -webkit-text-stroke: 0;
+  text-shadow: 0 0 8px rgba(240,200,80,0.9);
+  pointer-events: none;
+}
+/* "Labs" — a glowing monospace chip/badge (the computer-product touch) */
+.hero-stage .brandmark .labs {
+  position: relative;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 3.2vw, 2rem);
+  font-weight: 700; letter-spacing: 1.5px;
+  color: var(--gold);
+  background: rgba(240,200,80,0.08);
+  border: 1.5px solid rgba(240,200,80,0.55);
+  border-radius: 10px;
+  padding: 0.22em 0.5em;
+  box-shadow: 0 0 26px rgba(240,200,80,0.2), inset 0 0 18px rgba(240,200,80,0.07);
+}
+
+/* Argos — the keeper who carries the light and guides the visitor.
+   The whole guide group is moved by the sim script (follows the sun/cursor). */
+.hero-stage .argos-guide {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 3;
+  pointer-events: none;
+  will-change: transform;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hero-stage .argos-figure {
+  width: clamp(90px, 12vw, 150px);
+  height: auto;
+  filter: drop-shadow(0 0 22px rgba(34, 230, 198, 0.5));
+}
+.hero-stage .argos-bubble {
+  pointer-events: auto;
+  max-width: 220px;
+  margin-bottom: 8px;
+  background: rgba(13, 17, 23, 0.88);
+  border: 1px solid var(--cyan);
+  color: #eafff9;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  padding: 0.55rem 0.75rem;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(34, 230, 198, 0.28);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.45s, transform 0.45s;
+  text-align: center;
+}
+.hero-stage .argos-bubble.show { opacity: 1; transform: translateY(0); }
+.hero-stage .argos-bubble a { color: var(--cyan); font-weight: 700; }
+
+/* highlighted letter in the Insect Zoo wordmark — its light */
+.hero-stage .brandmark .word .lit {
+  -webkit-text-fill-color: var(--cyan);
+  color: var(--cyan);
+  text-shadow: 0 0 26px rgba(34, 230, 198, 0.95);
+}
+
+/* hero caption that turns the art into the proof */
+.hero-stage .hero-caption {
+  font-size: 0.9rem;
+  color: var(--gray-light);
+  max-width: 540px;
+  margin: 0 auto 1.6rem;
+  opacity: 0.92;
+}
+.hero-stage .hero-caption strong { color: var(--cyan); }
+.hero-stage .hero-caption .dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+/* hero copy below terminal */
+.hero-stage .hero-copy { position: relative; z-index: 2; text-align: center; margin-top: 0; width: 100%; max-width: 720px; }
+/* glow halo so the cursor-light visibly "enlightens" the title */
+.hero-stage .hero-copy::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 46%;
+  transform: translate(-50%, -50%);
+  width: 130%; height: 150%;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(34, 230, 198, 0.18) 0%, rgba(34, 230, 198, 0) 62%);
+  pointer-events: none;
+}
+.hero-stage .hero-copy h1 { overflow-wrap: break-word; }
+.hero-stage .hero-copy h1 { font-size: 2.7rem; font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1rem; }
+.hero-stage .hero-copy h1 .highlight { color: var(--cyan); }
+.hero-stage .hero-copy .subtitle { font-size: 1.2rem; color: var(--gray-light); margin: 0 auto 2rem; line-height: 1.6; }
+.hero-stage .hero-copy .cta-row { justify-content: center; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.8rem; }
+  .hero { min-height: 70vh; padding-top: 6rem; }
+  section { padding: 3rem 1.5rem; }
+  .hero-stage { min-height: 84vh; padding-top: 6rem; }
+  .hero-stage .brandmark .word { font-size: clamp(2.4rem, 11vw, 7.5rem); }
+  .hero-stage .hero-copy h1 { font-size: 2rem; }
+  .hero-stage .hero-copy h1 .dt-break { display: none; }
+  .hero-stage .eyebrow { font-size: 0.75rem; letter-spacing: 2px; }
+}
+
+/* === ROI SANDBOX — "The AI Bill Trap" === */
+.roi-wrap {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+@media (max-width: 768px) { .roi-wrap { grid-template-columns: 1fr; } }
+
+.roi-controls {
+  background: var(--navy-light);
+  border: 1px solid var(--navy-mid);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.roi-controls label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--gray-light);
+  margin-bottom: 1.5rem;
+}
+.roi-controls label:last-child { margin-bottom: 0; }
+.roi-controls .roi-out { float: right; color: var(--cyan); font-weight: 700; }
+.roi-controls input[type=range] { width: 100%; margin-top: 0.7rem; accent-color: var(--cyan); }
+
+.roi-viz {
+  background: var(--navy-light);
+  border: 1px solid var(--navy-mid);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+#roi-chart { width: 100%; height: 240px; display: block; }
+.roi-result { margin-top: 1rem; font-size: 0.95rem; line-height: 1.6; color: var(--gray-light); }
+.roi-result p { margin-bottom: 0.5rem; }
+.roi-result .big { font-size: 1.5rem; font-weight: 800; color: var(--cyan); }
+.roi-result .warn { color: var(--red-soft); font-weight: 700; }
+
+.roi-punch { text-align: center; font-size: 1.4rem; font-weight: 700; margin-top: 2.5rem; }
+.roi-punch .highlight { color: var(--cyan); }
+
+/* === SINGLE-CTA "Start the Experience" === */
+.btn-xl {
+  font-size: 1.15rem;
+  padding: 1rem 2.6rem;
+  box-shadow: 0 0 30px rgba(34, 230, 198, 0.4);
+}
+
+/* When the journey starts, Argos detaches into a fixed travelling guide */
+.argos-guide.fixed {
+  position: fixed;
+  left: auto; right: 18px; bottom: 18px; top: auto;
+  transform: none !important;
+  z-index: 60;
+  align-items: flex-end;
+}
+.argos-guide.fixed .argos-figure { width: clamp(68px, 9vw, 104px); }
+.argos-guide.fixed .argos-bubble { max-width: 240px; }

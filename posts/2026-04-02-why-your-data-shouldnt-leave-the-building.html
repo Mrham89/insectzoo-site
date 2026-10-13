@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why Your Manufacturing Data Shouldn't Leave the Building — Insect Zoo</title>
+  <meta name="description" content="Cloud AI sends your trade secrets through someone else's servers. Here's why on-premise AI is the answer for manufacturing and defense.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .post-body { max-width: 750px; margin: 0 auto; }
+    .post-body p { margin-bottom: 1.5rem; color: var(--gray-light); }
+    .post-body h3 { color: var(--cyan); margin-top: 2.5rem; margin-bottom: 1rem; }
+    .post-body strong { color: var(--white); }
+    .post-body ul { color: var(--gray-light); margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .post-body li { margin-bottom: 0.5rem; }
+    .post-meta { color: var(--gray-dark); font-size: 0.9rem; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../index.html" class="logo"><span class="pink">I</span>nsect <span class="gold">Z</span>oo</a>
+    <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
+    <ul>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../blog.html">Blog</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section style="padding-top: 7rem;">
+  <div class="post-body">
+    <a href="../blog.html" style="color: var(--cyan); font-size: 0.9rem;">&larr; Back to Blog</a>
+    <h1 style="margin-top: 1.5rem;">Why Your Manufacturing Data Shouldn't Leave the Building</h1>
+    <p class="post-meta">April 2, 2026 &middot; Johnathan Hamaker</p>
+
+    <p>I've been building embedded systems and AI infrastructure for a while now, and there's a pattern I keep seeing with small manufacturing companies: they know AI could help, but they can't use cloud tools because their data is too sensitive.</p>
+
+    <p>And they're right to be cautious.</p>
+
+    <h3>The Cloud AI Problem</h3>
+
+    <p>Every time you send a query to ChatGPT, Claude, or any cloud AI service, your data passes through infrastructure you don't own and can't audit. For a lot of businesses that's fine — but for companies working with:</p>
+
+    <ul>
+      <li><strong>ITAR-controlled designs</strong> (aerospace and defense)</li>
+      <li><strong>Proprietary process parameters</strong> (coating recipes, deposition rates, alloy formulations)</li>
+      <li><strong>Customer specifications</strong> under NDA</li>
+      <li><strong>Quality control data</strong> that reveals your defect rates and yields</li>
+    </ul>
+
+    <p>...sending that data to a cloud API isn't just risky. In some cases, it's a compliance violation.</p>
+
+    <h3>The Cost Problem</h3>
+
+    <p>Cloud AI pricing is designed to scale with usage. That sounds reasonable until your engineering team actually starts using it. A few hundred queries a month becomes a few thousand. Your $500/month bill becomes $5,000. And you're locked into someone else's pricing decisions.</p>
+
+    <p>Meanwhile, the GPU hardware to run equivalent models locally costs $5,000-$15,000 one time. After that, your marginal cost per query is electricity.</p>
+
+    <h3>What On-Premise AI Actually Looks Like</h3>
+
+    <p>I run this setup for my own engineering work. It's a rack-mount server with GPU acceleration, running multiple isolated virtual environments — one for model training, one for firmware development, one for simulation, one for data analysis. An air-gap firewall separates the secure access portal from the development labs.</p>
+
+    <p>The key architectural decision is isolation. The internet-facing portal lets you access the system from anywhere, but the development labs where your data lives have no path to the outside. Your process data, your models, your trade secrets — they physically cannot leave your network.</p>
+
+    <h3>Who This Is For</h3>
+
+    <p>If you're a small company (10-200 people) working with sensitive data and you've been on the sidelines while larger competitors adopt AI, this is the way in. You don't need a data science team. You don't need a six-figure budget. You need a server, the right architecture, and someone who knows how to configure it for your specific workflows.</p>
+
+    <p>That's what I do at <a href="../ai-lab.html">Insect Zoo</a>.</p>
+
+    <h3>Getting Started</h3>
+
+    <p>If this resonates, I'm happy to do a 30-minute walkthrough of the running system. No pitch, no slides — just a look at what's operational and a conversation about how it could map to your work.</p>
+
+    <p style="margin-top: 2rem; color: var(--white);">
+      <strong>Johnathan Hamaker</strong><br>
+      wafarmhub@gmail.com<br>
+      <a href="https://www.linkedin.com/in/johnathan-hamaker-a85039198">LinkedIn</a><br>
+      Washington State
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 FarmHub LLC. All rights reserved. &nbsp;|&nbsp; Washington State &nbsp;|&nbsp; <a href="mailto:wafarmhub@gmail.com">wafarmhub@gmail.com</a></p>
+</footer>
+
+<!-- Charlotte the barn spider roams the page (js/charlotte.js) -->
+<script src="../js/argos.js" defer></script>
+<script src="../js/orbplan.js" defer></script>
+<script src="../js/charlotte.js" defer></script>
+</body>
+</html>
